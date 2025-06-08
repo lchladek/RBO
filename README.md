@@ -12,7 +12,7 @@ The MIT license is located at `/src/LICENSE.txt`.
 
 ### `/sigir_ap24`
 
-This subdirectory is a modified copy of the (https://github.com/matteo-corsi/sigir_ap24)[SIGIR-AP24] repository by Corsi and Urbano, 2024. 
+This subdirectory is a modified copy of the [https://github.com/matteo-corsi/sigir_ap24](SIGIR-AP24) repository by Corsi and Urbano, 2024. 
 
 The MIT license is located at `/sigir_ap24/LICENSE.txt`.
 
