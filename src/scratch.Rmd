@@ -1,0 +1,31 @@
+---
+title: 'Probabilistic Bounds for RBO: Week 6'
+author: "Lukáš Chládek"
+date: "2025-05-19"
+---
+
+```{r}
+setwd("~/RP/lchladek/RBO")
+source("src/lib.R")
+```
+
+```{r}
+
+inum_ranking_to_letter <- function(ranking) {
+   lapply(ranking, function(rank) {
+     bad_items <- which(substr(rank, 1 ,1) != "i")
+     if (length(bad_items) > 0) {
+       stop(paste("Unexpected item format: ", rank[bad_items]))
+     }
+     nums <- as.numeric(substr(rank, 1000))
+     sapply(nums, num_to_letter, USE.NAMES = FALSE)
+   })
+ }
+
+```
+
+```{r}
+xy <- simulate_rankings(20, 20, 35)
+
+print(lapply(xy, to_string))
+```
