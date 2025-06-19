@@ -50,14 +50,16 @@ library(readr)
 
 args <- parser$parse_args()
 
-if (args$workers == 1) {
-  plan(sequential)
-} else {
-  plan(multisession, workers=args$workers)
-}
-  
 # Loading the library
 suppressPackageStartupMessages(source("src/lib.R"))
+
+if (args$workers == 1) {
+  message("Using sequential runner.")
+  plan(sequential)
+} else {
+  message("Using parallel runner.")
+  plan(multisession, workers=args$workers)
+}
 
 message(paste("Using seed:", args$seed))
 set.seed(args$seed)
