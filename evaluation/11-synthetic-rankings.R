@@ -78,6 +78,7 @@ while(length(pairs) < args$ranking_count) {
     message("Retrying..")
     next
   if (tie_permutations(pair) < args$permutation_limit) {
+    message(".", appendLF=FALSE)
     pairs[[curr_idx]] <- pair
   }
   pair <- lapply(pair, inum_ranking_to_letter)
