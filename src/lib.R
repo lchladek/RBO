@@ -168,7 +168,7 @@ complete_pmf <- function(pair, p=0.9, score="min") {
       permutation[bit] <- 1
     }
     if (!incremented) {
-      sorted <- sort_by(distribution, distribution$rbo)
+      sorted <- distribution[order(distribution$rbo), ]
       rownames(sorted) <- NULL
       return(data.frame(rbo=sorted$rbo, prob=sorted$count/prod(max_permutation)))
     }
@@ -426,7 +426,7 @@ estimate_pmf <- function(pair, p=0.9, convolution_fn=cull_all_convolution, trunc
   probs <- unlist(probabilities)
   
   df <- data.frame(rbo=rbos, prob=probs)
-  df <- sort_by(df, rbos)
+  df <- df[order(rbos), ]
   rownames(df) <- seq_along(rbos)
   df
   
