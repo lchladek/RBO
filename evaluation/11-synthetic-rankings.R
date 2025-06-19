@@ -104,7 +104,7 @@ output_df <- function(df) {
 message(paste("Generated", args$ranking_count, "rankings"))
 message("Now computing permutations...")
   
-results <- future_lapply(seq(args$ranking_count), future.seed=args$seed, function(ranking_index) {
+results <- lapply(seq(args$ranking_count), function(ranking_index) {
   
   l <- ls[ranking_index]
   pair <- pairs[[ranking_index]]
