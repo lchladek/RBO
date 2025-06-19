@@ -45,10 +45,11 @@ parser$add_argument("--workers", type="integer", metavar="<count>", default=1,
 # Load libraries
 library(rlang)
 library(emdist)
-library(future.apply)
 library(readr)
 
 args <- parser$parse_args()
+
+setwd("~/RBO")
 
 # Loading the library
 suppressPackageStartupMessages(source("src/lib.R"))

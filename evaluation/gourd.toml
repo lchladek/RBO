@@ -21,6 +21,7 @@ afterscript = "./afterscript.sh"
 arguments = [
 	     "--workers", "8",
 	     "--permutation-limit", "100000",
+	     "--earth-movers-distance",
 #       "--workers", "8"
        "--workers", "1"
 	    ]
