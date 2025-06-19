@@ -168,7 +168,7 @@ complete_pmf <- function(pair, p=0.9, score="min") {
       permutation[bit] <- 1
     }
     if (!incremented) {
-      sorted <- sort_by.data.frame(distribution, distribution$rbo)
+      sorted <- sort_by(distribution, distribution$rbo)
       rownames(sorted) <- NULL
       return(data.frame(rbo=sorted$rbo, prob=sorted$count/prod(max_permutation)))
     }
