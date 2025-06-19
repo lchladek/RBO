@@ -64,21 +64,23 @@ if (args$workers == 1) {
 message(paste("Using seed:", args$seed))
 set.seed(args$seed)
 
-message("Generating rankings.")
-
 if (args$length_range[1] < args$length_range[2]) {
   ls <- sample(seq(args$length_range[1], args$length_range[2]), args$ranking_count, replace=TRUE)
 } else {
   ls <- rep(args$length_range[1], args$ranking_count) 
 }
 
+
+message("Generating rankings.")
+
 pairs <- list()
 while(length(pairs) < args$ranking_count) {
   curr_idx <- length(pairs) + 1
   pair <-  try(simulate_rankings(len_x=ls[curr_idx], len_y=ls[curr_idx], n=args$item_count))
-  if(inherits(pair, "try-error"))
+  if(inherits(pair, "try-error")) {
     message("Retrying..")
     next
+  }
   if (tie_permutations(pair) < args$permutation_limit) {
     message(".", appendLF=FALSE)
     pair <- lapply(pair, inum_ranking_to_letter)
