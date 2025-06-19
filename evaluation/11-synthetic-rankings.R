@@ -73,12 +73,17 @@ if (args$length_range[1] < args$length_range[2]) {
 pairs <- list()
 while(length(pairs) < args$ranking_count) {
   curr_idx <- length(pairs) + 1
-  pair <- simulate_rankings(ls[curr_idx], ls[curr_idx], args$item_count)
+  pair <-  try(simulate_rankings(ls[curr_idx], ls[curr_idx], args$item_count))
+  if(inherits(pair, "try-error"))
+    message("Retrying..")
+    next
   if (tie_permutations(pair) < args$permutation_limit) {
     pairs[[curr_idx]] <- pair
   }
   pair <- lapply(pair, inum_ranking_to_letter)
 }
+
+message("Rankings generated.")
 
 is_first <- TRUE
 output_it <- function(df) {
