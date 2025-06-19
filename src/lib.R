@@ -437,8 +437,13 @@ pmf_quantile <- function(pmf, probs) {
   
   sapply(probs, function(prob) {
     index <- head(n=1, which(cum_p > prob))
-    pmf$rbo[index]
+    if (length(index) == 0) {
+      pmf$rbo[length(pmf$rbo)]
+    } else {
+      pmf$rbo[index]
+    }
   })
+  
 }
 
 pmf_mean <- function(pmf) {

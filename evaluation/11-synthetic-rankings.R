@@ -91,10 +91,10 @@ while(length(pairs) < args$ranking_count) {
 
 message("Rankings generated.")
 
-is_first <- TRUE
-output_it <- function(df) {
+is_first <<- TRUE
+output_df <- function(df) {
   if (is_first) {
-    is_first <- FALSE
+    is_first <<- FALSE
     cat(format_csv(df, col_names=TRUE))
   } else {
     cat(format_csv(df, col_names=FALSE))
@@ -177,7 +177,7 @@ results <- future_lapply(seq(args$ranking_count), future.seed=args$seed, functio
 
   message(paste(ranking_index, "complete"))
 
-  output_it(pair_result)
+  lapply(pair_result, output_df)
   
   pair_result
   
