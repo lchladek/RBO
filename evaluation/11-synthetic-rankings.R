@@ -79,9 +79,11 @@ while(length(pairs) < args$ranking_count) {
     next
   if (tie_permutations(pair) < args$permutation_limit) {
     message(".", appendLF=FALSE)
+    pair <- lapply(pair, inum_ranking_to_letter)
     pairs[[curr_idx]] <- pair
+  } else {
+    message("x", appendLF=FALSE)
   }
-  pair <- lapply(pair, inum_ranking_to_letter)
 }
 
 message("Rankings generated.")
