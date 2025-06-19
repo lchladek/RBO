@@ -109,7 +109,7 @@ bitstring_to_int <- function(s) {
 set.seed(50)
 pairs <- list()
 while(length(pairs) < 10) {
-  pair <- simulate_rankings(10, 10, 20)
+  pair <- try(simulate_rankings(10, 10, 20))
   if (tie_permutations(pair) < 100000) {
     pairs[[length(pairs) + 1]] <- pair
   }

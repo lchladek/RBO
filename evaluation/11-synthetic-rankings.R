@@ -78,13 +78,12 @@ while(length(pairs) < args$ranking_count) {
   curr_idx <- length(pairs) + 1
   pair <-  try(simulate_rankings(len_x=ls[curr_idx], len_y=ls[curr_idx], n=args$item_count))
   if(inherits(pair, "try-error")) {
-    message("Retrying..")
-    next
+    message("Check your item configuration..")
+    stop()
   }
   if (tie_permutations(pair) < args$permutation_limit) {
     message(".", appendLF=FALSE)
-    pair <- lapply(pair, inum_ranking_to_letter)
-    pairs[[curr_idx]] <- pair
+    pairs[[curr_idx]] <-  lapply(pair, inum_ranking_to_letter)
   } else {
     message("x", appendLF=FALSE)
   }
@@ -108,7 +107,7 @@ message("Now computing permutations...")
 results <- future_lapply(seq(args$ranking_count), future.seed=args$seed, function(ranking_index) {
   
   l <- ls[ranking_index]
-  pair <- pair[[ranking_index]]
+  pair <- pairs[[ranking_index]]
   n <- args$item_count
   
   permutation_count <- tie_permutations(pair)
