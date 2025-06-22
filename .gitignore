@@ -1,0 +1,6 @@
+.RData
+.Rhistory
+*.csv
+/sigir_ap24/scratch
+/plots
+/data
