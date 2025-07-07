@@ -3,6 +3,20 @@
 This repository contains the R source code for reproducing the results in the article,
 'A Probabilistic Model of Uncertainty in Rank-Biased Overlap for Tied Data' (Lukáš Chládek, 2025).
 
+The article is available at: https://resolver.tudelft.nl/uuid:bf1898c1-3c4c-4625-b953-5a6a398c5ad2
+
+Please use the following BibTeX citation:
+```bibtex
+@mastersthesis{Chladek2025,
+   title = {A Probabilistic Account of the Uncertainty Due to Ties in Rank-Biased Overlap},
+   author = {Lukáš Chládek}, year = 2025, month = {June}, address = {Delft, The Netherlands},
+   note = {Available at \url{https://resolver.tudelft.nl/uuid:bf1898c1-3c4c-4625-b953-5a6a398c5ad2}},
+   school = {Delft University of Technology},
+   type = {BSc thesis}
+} 
+```
+
+
 # Usage
 
 ## Using the R libraries
